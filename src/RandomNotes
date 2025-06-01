@@ -1,0 +1,9 @@
+Interfaces that have single abstract method i.e. single method without a body, they are known as functional interfaces.
+
+
+Thread pool:
+Thread pool is a collection of pre-initialized threads that we can use in the future for certain processes. Once we set the no. of threads in thread pool then they are reserved for that function.
+Advantages:
+    - Resource Management: Creation and destruction of threads can have a resource overhead. On using thread pool improves resource management
+    - Response Time: Response time is improved since now we don't have to create threads from scratch.
+    - Control over thread count: We can put limit on the number of threads that we can create. It prevents creation of large number of threads unintentionally.
