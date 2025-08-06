@@ -11,14 +11,14 @@ public class ThreadStates extends Thread{
 
     public static void main(String[] args) throws InterruptedException {
         Thread t1 = new ThreadStates();
-        System.out.println(t1.getState());
+        System.out.println(t1.getState());      //NEW
         t1.start();
-        System.out.println(t1.getState());
-        System.out.println(Thread.currentThread().getState());  //In java, both runnable and running thread are in RUNNABLE state
+        System.out.println(t1.getState());      //RUNNABLE
+        System.out.println(Thread.currentThread().getState());  //RUNNABLE.....In java, both runnable and running thread are in RUNNABLE state
         Thread.sleep(100);
-        System.out.println(t1.getState());
+        System.out.println(t1.getState());      //TIMED_WAITING
         t1.join();
-        System.out.println(t1.getState());
+        System.out.println(t1.getState());      //TERMINATED
 
 
     }

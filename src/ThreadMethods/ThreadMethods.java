@@ -59,8 +59,8 @@ public class ThreadMethods extends Thread{
         System.out.println("------------------------------------");
         Thread t2 = new ThreadMethods("Interrupt thread");
         t2.start();
-        t2.interrupt();     // interrupts the thread, if sleeping or anything it interrupts the thread
-//        t2.join();
+        t2.interrupt();     // interrupts the thread, if sleeping or anything it interrupts the thread. Interruption doesnt mean to kill the thread, it just sets the interrupt variable value in Thread as true. If the interrupt is ignored, it continues execution.
+        t2.join();
         Thread.sleep(2000);
         System.out.println("-------------------------------------");
         Thread t3 = new NewThread();

@@ -5,7 +5,7 @@ package ThreadCommunication;
  * <ul>
  *     <li> wait() -> Releases the lock and waits till some other thread calls notify() or notifyAll() method</li>
  *     <li>notify() -> It is used to wake up a single thread that is waiting</li>
- *     <li>notifyAll() -> It is used to wale up multiple threads that are there in the waiting stage</li>
+ *     <li>notifyAll() -> It is used to wake up multiple threads that are there in the waiting stage</li>
  * </ul>
  */
 class SharedResource {
