@@ -2,10 +2,28 @@ package Locks;
 
 
 /**
- * <p>In this Paper.writeWithPaperAndPen() is trying to access Pen.finishWriting(), and Pen.writeWithPenAndPaper() is trying to access Paper.finishWriting()....but since both are depending on each other to release lock so that they can acquire lock. This results in a deadlock
- * <p>This is resolved by ensuring that multiple threads follow a set order of acquiring locks. Like in this example it is resolved by using synchronized block with condition in task2. So this ensures that before paper.writeWithPaperAndPen(pen); executes Pen is not locked, and it can access Pen. Since task2 will wait till Pen is unlocked, task1 is able to proceed with its operation and on its end it releases lock and now task2 is able to access the lock hence, it executes.
+ * <p>
+ * In this example, {@code Paper.writeWithPaperAndPen()} tries to access {@code Pen.finishWriting()},
+ * and {@code Pen.writeWithPenAndPaper()} tries to access {@code Paper.finishWriting()}.
+ * <br>
+ * Since both threads are waiting for each other to release the lock so they can proceed,
+ * a circular wait occurs — resulting in a <b>deadlock</b>.
+ * </p>
+ *
+ * <p>
+ * This issue is resolved by ensuring that multiple threads follow a consistent order of acquiring locks.
+ * In this example, the solution involves using a synchronized block with a condition in {@code task2}.
+ * </p>
+ *
+ * <p>
+ * This ensures that before {@code paper.writeWithPaperAndPen(pen);} is executed,
+ * the {@code Pen} instance is not locked and can be accessed.
+ * <br>
+ * Since {@code task2} waits until {@code Pen} is unlocked, {@code task1} is able to proceed and eventually release its lock.
+ * Then, {@code task2} can acquire the necessary lock and continue, thus preventing deadlock.
+ * </p>
  */
-public class DeadLockExample {
+public class T1_DeadLockExample {
     static class Paper {
         public synchronized void writeWithPaperAndPen(Pen pen) {
             System.out.println(Thread.currentThread().getName() + " is using paper " + this + " and trying to use pen " + pen);

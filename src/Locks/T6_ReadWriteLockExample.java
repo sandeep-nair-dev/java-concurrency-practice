@@ -16,7 +16,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  *  It is mutually exclusive lock for write operations.</li>
  * </ul>
  */
-public class ReadWriteLockExample {
+public class T6_ReadWriteLockExample {
     int count = 0;
     private final ReadWriteLock lock = new ReentrantReadWriteLock();
     private final Lock readLock = lock.readLock();
@@ -44,7 +44,7 @@ public class ReadWriteLockExample {
     }
 
     public static void main(String[] args) {
-        ReadWriteLockExample readWriteLockExample = new ReadWriteLockExample();
+        T6_ReadWriteLockExample readWriteLockExample = new T6_ReadWriteLockExample();
         Runnable writeTask = () -> {
             for (int i = 0; i < 10; i++) {
                 readWriteLockExample.increment();

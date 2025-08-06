@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class BankAccountWithLock {
+public class T3_BankAccountWithLock {
     int balance = 100;
     Lock lock = new ReentrantLock();
 

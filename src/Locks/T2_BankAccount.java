@@ -1,6 +1,6 @@
 package Locks;
 
-public class BankAccount {
+public class T2_BankAccount {
     int balance =100;
 
     /**

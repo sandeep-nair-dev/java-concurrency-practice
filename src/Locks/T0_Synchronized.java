@@ -66,7 +66,7 @@ class MyThread extends Thread {
     }
 }
 
-public class Synchronized {
+public class T0_Synchronized {
 
     public static void main(String[] args) {
         Counter counter = new Counter();

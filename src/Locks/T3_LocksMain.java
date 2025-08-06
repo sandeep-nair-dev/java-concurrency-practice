@@ -1,8 +1,8 @@
 package Locks;
 
-public class LocksMain {
+public class T3_LocksMain {
     public static void main(String[] args) {
-        BankAccountWithLock bankAccount = new BankAccountWithLock();
+        T3_BankAccountWithLock bankAccount = new T3_BankAccountWithLock();
         Runnable task = new Runnable() {
             @Override
             public void run() {

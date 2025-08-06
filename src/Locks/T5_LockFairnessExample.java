@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class LockFairnessExample {
+public class T5_LockFairnessExample {
     /**
      * <p>This is an unfair lock. An unfair lock does not guarantee any order — a thread may "barge in" and acquire the lock even if other threads have been waiting longer.</p>
      *
@@ -37,7 +37,7 @@ public class LockFairnessExample {
     }
 
     public static void main(String[] args) {
-        LockFairnessExample resource = new LockFairnessExample();
+        T5_LockFairnessExample resource = new T5_LockFairnessExample();
         Runnable task = new Runnable() {
             @Override
             public void run() {
