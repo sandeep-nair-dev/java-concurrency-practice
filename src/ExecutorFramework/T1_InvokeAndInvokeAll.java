@@ -5,18 +5,42 @@ import java.util.List;
 import java.util.concurrent.*;
 
 /**
- *  <h3><b>InvokeAll and InvokeAny</b></h3>
- *  <ul>
- *      <li>invokeAll and invokeAny are blocking calls, i.e., main thread waits for the thread to complete its execution.</li>
- *      <li>It returns a List<Future> which contains list of futures i.e., result of the callables</li>
- *      <li><b>invokeAll(Collection<>)</b>: executes all the callables present in the list passed into it</li>
- *      <li><b>invokeAll(Collection<>, timeout, TimeUnits)</b>: executes all the callables it can with the threads available to it within the provided timeout.
- *      After timeout if something left, it throws CancellationException</li>
- *      <li><b>invokeAny(Collection<>)</b>: executes the callables and as soon as one is done and it gets the result it gets that and ignores others</li>
- *      <li><b>invokeAny(Collection<>, timeout, TimeUnits)</b>: Just like invokeAny, just within the provided timeout</li>
- *  </ul>
+ * <h3><b>invokeAll and invokeAny</b></h3>
+ * <p>
+ * These are blocking methods provided by {@code ExecutorService} to execute multiple {@code Callable} tasks concurrently.
+ * Both methods pause the main thread until results are available (or timeout occurs).
+ * </p>
+ *
+ * <ul>
+ *     <li>
+ *         <b>{@code invokeAll(Collection<Callable<?>> tasks)}</b>:<br>
+ *         Submits all tasks and waits for <i>all</i> of them to complete. Returns a {@code List<Future<?>>} containing the results of each task.
+ *     </li>
+ *
+ *     <li>
+ *         <b>{@code invokeAll(Collection<Callable<?>> tasks, long timeout, TimeUnit unit)}</b>:<br>
+ *         Submits all tasks and waits up to the given timeout for them to complete.
+ *         Any task not completed by the deadline is cancelled. You may receive {@code CancellationException} when accessing those.
+ *     </li>
+ *
+ *     <li>
+ *         <b>{@code invokeAny(Collection<Callable<?>> tasks)}</b>:<br>
+ *         Executes the given tasks and returns the result of <i>one</i> that completes successfully (fastest).
+ *         All other unfinished tasks are cancelled. Still blocks until at least one task finishes.
+ *     </li>
+ *
+ *     <li>
+ *         <b>{@code invokeAny(Collection<Callable<?>> tasks, long timeout, TimeUnit unit)}</b>:<br>
+ *         Similar to {@code invokeAny}, but waits only for the specified timeout. If no task completes in time, throws {@code TimeoutException}.
+ *     </li>
+ *
+ *     <li>
+ *         <b>Note:</b> Both methods block the main thread until they return (i.e., they are synchronous).
+ *     </li>
+ * </ul>
  */
-public class InvokeAndInvokeAll {
+
+public class T1_InvokeAndInvokeAll {
 
     public static void main(String[] args) throws InterruptedException {
         List<Callable<Integer>> callables = new ArrayList<>();

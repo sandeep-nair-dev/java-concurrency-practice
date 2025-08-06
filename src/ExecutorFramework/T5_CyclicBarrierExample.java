@@ -3,18 +3,49 @@ package ExecutorFramework;
 import java.util.concurrent.*;
 
 /**
- * <h3><b>Cyclic Barrier</b></h3>
- * <p>A cyclic Barrier creates a kind of barrier and trips when the given number of parties (threads) are waiting upon it.
- * So if we mention 4 as number of parties, then for each task, the thread will perform the task and wait at cyclicBarrier.await() till all the parties mentioned have reached the point</p>
- * <p>It blocks the threads or parties that have cyclic barrier in them but it doesn't block the main thread.</p>
+ * <h3><b>CyclicBarrier</b></h3>
+ * <p>
+ * A {@code CyclicBarrier} creates a synchronization point (a barrier) that blocks a set number of threads (parties)
+ * until all have reached the barrier. Once all threads call {@code await()}, the barrier is tripped and all are released.
+ * </p>
+ *
+ * <p>
+ * For example, if 4 parties are specified, each thread will perform its assigned task and then call {@code cyclicBarrier.await()}.
+ * It will wait there until all 4 threads reach that point. Only then will they all proceed.
+ * </p>
+ *
+ * <p>
+ * <b>Note:</b> {@code CyclicBarrier} only blocks the threads participating in it. It does <i>not</i> block the main thread unless it's one of the parties.
+ * </p>
+ *
  * <ul>
- *     <li>CyclicBarrier(int parties): Creates a cyclic barrier with provided number of parties</li>
- *     <li>CyclicBarrier(int parties, Runnable barrierAction): Creates a cyclic barrier with provided number of parties. It will execute the barrier action when barrier is tripped, that is all parties reach the await code line. The barrier action is performed by the last thread that enters the barrier.</li>
- *     <li>cyclicBarrier.await(): Waits until all parties have invoked await on the barrier. Waits till the last thread invokes await or one of the parties thread was interrupted or timeout while waiting or the cyclic barrier was reset.</li>
- *     <li>cyclicBarrier.reset(): Resets the barrier to its initial state. If any parties are currently waiting at the barrier(reached the await() code), they will return with a BrokenBarrierException</li>
+ *     <li><b>{@code CyclicBarrier(int parties)}:</b>
+ *         Creates a barrier that will trip when the specified number of threads (parties) have called {@code await()}.
+ *     </li>
+ *
+ *     <li><b>{@code CyclicBarrier(int parties, Runnable barrierAction)}:</b><br>
+ *         Similar to the above, but allows specifying a {@code Runnable} that will run once, when the barrier is tripped.
+ *         This action is executed by the <i>last thread</i> to reach the barrier.
+ *     </li>
+ *
+ *     <li><b>{@code cyclicBarrier.await()}:</b>
+ *         Causes the current thread to wait until all parties have invoked {@code await()} on this barrier.
+ *         It may return early if:
+ *         <ul>
+ *             <li>The waiting thread is interrupted</li>
+ *             <li>A timeout occurs</li>
+ *             <li>The barrier is reset or broken</li>
+ *         </ul>
+ *     </li>
+ *
+ *     <li><b>{@code cyclicBarrier.reset()}:</b>
+ *         Resets the barrier to its initial state.
+ *         Any threads currently waiting at the barrier will receive a {@code BrokenBarrierException}.
+ *     </li>
  * </ul>
  */
-public class CyclicBarrierExample {
+
+public class T5_CyclicBarrierExample {
 
     public static void main(String[] args) throws InterruptedException, ExecutionException {
 

@@ -53,7 +53,7 @@ import java.util.concurrent.*;
  *
  *  </ul>
  */
-public class FutureExample {
+public class T2_FutureExample {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
